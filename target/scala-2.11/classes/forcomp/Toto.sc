@@ -46,6 +46,14 @@ ard.take(2).map(_ => true) union ard.drop(2)
 Toto.str1
 Toto.sousCombinaison(Toto.str1, 3)
 Toto.element(Toto.str1, ar)
-for(ele <- 1 to 2) {
-  println (ele)
-}
+val l0 = List
+var l1 = List("a" , "b", "c")
+val l2 = List("aa", "ab", "ac", "bb", "bc", "cc")
+val l3 = List("xxx", "xx")
+val l = l1 ++ l2
+val tab = Array("toto", "titi", "tutu")
+tab.foldLeft[String]("")((z,b) => z.concat(b))
+tab.reduceLeft[String]((z,b) => z.concat(b))
+
+
+

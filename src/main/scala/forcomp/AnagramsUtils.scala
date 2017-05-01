@@ -46,7 +46,7 @@ object AnagramsUtils {
       l1 = element(chaine, tab1) :: l1
       proTab = prochain(tab1)
     }
-    l1
+    l1.toSet.toList
   }
 
   def element(chaine:String, tab:Array[Boolean]): Word = {

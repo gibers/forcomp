@@ -88,7 +88,20 @@ object Anagrams {
    *  Note that the order of the occurrence list subsets does not matter -- the subsets
    *  in the example above could have been displayed in some other order.
    */
-  def combinations(occurrences: Occurrences): List[Occurrences] = ???
+  def combinations(occurrences: Occurrences): List[Occurrences] = {
+    val str1 = occurrences.foldLeft[String]("")( (z, p) => z.concat(p._1.toString*p._2) )
+    var nb = str1.length
+    val lres = new Array[List[Occurrences]](nb)
+    while(nb > 0) {
+      lres(nb-1) = AnagramsUtils.sousCombinaison(str1, nb).map( Anagrams.wordOccurrences(_) )
+      nb -= 1
+    }
+
+    lres.length match {
+      case 0 => List(List())
+      case a => lres.reduceLeft[List[Occurrences]]((z,b) => z ++ b) ++ List(List())
+    }
+  }
 
 
   /** Subtracts occurrence list `y` from occurrence list `x`.
